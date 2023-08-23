@@ -11,7 +11,7 @@ console.log("Hello World")
         What are these objects?
         These objects are elements, Attributes, meta tags
 
-        The root node consists of head always
+        The root node consists of <html> always
 
         The DOM provides a DOM API, Which allows javascript to manipulate different elements of DOM
 
