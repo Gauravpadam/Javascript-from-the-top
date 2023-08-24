@@ -38,6 +38,36 @@ console.log(typeof someString , someString);
 // Typecasting booleans
 //This is same as python, just use Boolean() to convert
 
+/* ********************************** OPERATIONS *************************************** */
 
+let str1 = "String1"
+let str2 = "String2"
 
+str3 = str1 + " " + str2
+console.log(str3);
+
+// Things get weird when JS is the language -_-
+
+console.log(1 + 2); // 3
+console.log(1 + 1 + "2" , typeof(1 + 1 + "2"));  // Concatenating numbers with strings? Possible. Check the priority of the operations though
+
+// Let me confuse you now
+
+console.log("2" + 1 + 1) // Now it doesn't add
+
+//similarly
+console.log(+true); // prints 1
+console.log(+"") // prints 0
+
+// The reason behind this is operator precedence, Some operators are treated with higer priority and earlier than other opearators
+
+// The same behaviour is followed here
+
+let counter = 100
+
+console.log(counter++ , ++counter); // A perfect example of prefix and postfix operation
+// Counter ++ delays to show the result as long as console.log is not finished executing
+// But ++counter is performed on the incremented count of 100 i.e. 101, A brilliant example!
+
+// Read more about this on MDN Docs JS prefix postfix
 
