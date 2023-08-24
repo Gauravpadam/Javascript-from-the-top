@@ -38,3 +38,45 @@ console.error("This gives me an error")
 console.assert(4 == 4)
 console.assert(4 == "bananas")
 console.log("The above error is console.assert(4 == bananas)")
+console.clear()
+
+// Variables and Datatypes
+/*
+`   3 ways to declare a variable,
+    var - var has a global scope, same as let but with a global scope
+    let - let is same as var but with a local/block scope instead
+    const - A value which can't be manipulated ahead in the program, They also have a block scope
+
+    Datatypes in JS?
+    Strings
+    bool
+    numbers:
+        int
+        float
+    undefined
+    not defined
+    null
+    nan
+*/
+
+// This will totally clear up the constrasting behaviour of vars an lets
+
+function myfunc(){
+    if (true){
+        var varVariable = "I'm Var"
+        let letVariable = "I'm Let"
+
+        console.log(varVariable) // Output: "I'm Var"
+        console.log(letVariable) // Output: "I'm Let"
+    }
+
+    console.log(varVariable) // Output: "I'm Var"
+    console.log(letVariable) // Output: "Not defined"
+}
+
+// myfunc() I commented the call since the error cannot be cleared by console.clear()
+
+// Thus proving my point, var has a global scope and let has a block scope
+console.clear()
+
+
