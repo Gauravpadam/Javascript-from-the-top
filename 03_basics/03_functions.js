@@ -27,4 +27,66 @@ const anotherFuncToAdd = function(number1 , number2){
 
 console.log(anotherFuncToAdd()); // NaN! you have not defined any arguments to pass onto the function
 
+// Let's take this up a notch
+
+let myfunc2 = function(num1){
+    return num1
+}
+
+console.log(myfunc2(200 , 400 , 600)) // Expecting an error right? Multiple arguments passed expecting 1 argument?
+// Suprisingly it prints, 200 (ffs javascript *2 -_-)
+
+// It took the first value and made a nice ruckus of the other two
+
+// The question for you is, Give me all the values, Use your brains
+// Yes, That's right, We'll return an array, But how?
+// The rest operator ...
+
+//let's see
+
+myfunc2 = function(...num1){ // The spread and rest operators are the same, It depends on the context they are used in!
+    return num1
+}
+
+console.log(myfunc2(200 , 400 , 600)) // Returns [200 , 400 , 600]! An array
+
+// Let's take it up another notch
+
+myfunc2 = function(var1 , var2 , ...num1){
+    return num1
+}
+
+console.log(myfunc2(...[200 , 400 , 600 , 2000])); // Now tell me the output of this ;)
+
+// that's right, [600 , 2000]
+// How? It's easy, The array first gets spread by the spread operator,
+// Then the var1 and var2 takes 200 and 400
+// Leftover 600 and 200 is taken by the rest operator and an array is returned out of it
+
+// That's it
+
+// What about passing objects and arrays?
+
+let passingObjects = function(myObject){
+
+    return Object.entries(myObject) // returns key-value pairs out of object attributes
+
+}
+
+console.log(passingObjects({name: "Gaurav" , profession: "DevOps Engineer"}));
+
+// Be careful when passing objects, If you try to print attributes which don't exist, It doesn't throw an error, Just prints undefined!
+
+
+let passingArrays = function(myArr){
+    // return Math.max(myArr) returns NaN
+    return Math.max(...myArr)
+}
+
+const arr = [10 , 20 , 30 , 40]
+console.log(passingArrays(arr)); // prints 40? Check again
+
+// Math.max wants a range of numbers as an input, Not an array, So we spread the array!
+// After the spread edit, It prints 40
+
 // That's it, Cool
