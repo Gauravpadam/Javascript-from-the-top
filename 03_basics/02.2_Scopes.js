@@ -50,4 +50,28 @@ if (true) {
 
 }
 
-// That's it, That's the nested scope, Cool
+// ******************************************* Interesting ******************************************************
+
+// Let's take a spoiler of hoisting in javascript
+
+// So, We already know there are two ways to declare a function, And both have different behviours in certain cases like this one
+
+
+// # Method 1: No assignment, Direct declaration
+console.log(addOne(5)); // This is strange how will this work the function declared aft... wait what?!
+function addOne(num){
+    return num + 1
+}
+
+console.log(addTwo(5)) // Were you expecting 7? It gives a reference error before initialization
+let addTwo = function(num){ // This kind of function declaration is also called expression
+    return num + 2
+}
+
+// The latter gave error because, And remember this
+// Only declarations can be hoisted , Initializations and assignments cannot
+// First is a declaration, Second is an assignment, Therefore the second one is not hoisted
+
+// We'll come back to hoisting later
+
+// That's it, Cool, Easy
