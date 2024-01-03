@@ -1,0 +1,43 @@
+<!--In this module, Let's learn how to edit children in a DOM-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM REPLACE</title>
+</head>
+<body>
+    <ul class="langNames">
+
+    </ul>
+<script>
+
+    // A more sophisticated way to make elements - Also optimized.
+    function makeListItem(langName){
+        const newItem = document.createElement('li')
+        newItem.appendChild(document.createTextNode(langName))
+        document.querySelector('.langNames').appendChild(newItem)
+    }
+
+    makeListItem('Javascript');
+    makeListItem('Python');
+    makeListItem('Golang');
+    makeListItem('Rust');
+
+    // Replacing a child
+
+    const replace = document.createElement('li')
+    replace.textContent = 'Bash';
+
+    document.querySelector('li:nth-child(4)').replaceWith(replace) // Replaces the 4th list item with 'bash'
+
+    // OR do this
+
+    document.querySelector('li:first-child').outerHTML = '<li>Typescript</li>' // Replaces the first child with 'Typescript'
+
+    // Remove the last lang bash
+    document.querySelector('li:last-child').remove()
+</script>
+</body>
+</html>
