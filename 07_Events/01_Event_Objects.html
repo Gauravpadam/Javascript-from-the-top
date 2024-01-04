@@ -1,0 +1,116 @@
+<!--Event objects masterclass-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Objects</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing images</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+   <script>
+    // 3 ways to add event listeners
+
+    // 1. Add onclick directly to an html element (worst way in vanilla js; best in reactJS)
+
+    // 2. Add onclick via script itself (Okay, not good not bad)
+
+            // document.getElementById('owl').onclick = function () {
+            //     alert("owl clicked")
+            // }
+
+    // 3. The best method; Event listeners
+
+            // document.getElementById('owl').addEventListener('click' , function (e) {
+
+                    // console.log(e); // e is an event object
+
+                    // Some important properties of this object:
+
+                    // type, timestamp, defaultPrevented
+                    // target, toElement, srcElement, currentTarget,
+                    // clientX, clientY, screenX, screenY
+                    // altkey, ctrlkey, shiftkey, keyCode
+
+                    // alert("owl clicked")
+                
+            // }, false) // false param for handling event propagation
+    
+    // Other ways to add:
+            
+            // attachEvent()
+            // JQuery - on
+    
+    // Event propagation, Event bubbling
+
+            // document.getElementById('images').addEventListener('click' , function (e) {
+
+            //     console.log("Clicked inside the ui");
+                
+            // }, false)
+
+            // document.getElementById('owl').addEventListener('click' , function (e) {
+                
+            //     console.log("Owl clicked");
+
+            //     // To stop propagation
+            //     e.stopPropagation() // Now it'll only print owl clicked
+
+            // }, false)
+
+    // The result on clicking the owl is:
+    // Owl clicked
+    // Clicked inside ul
+
+    // This behaviour where events are propagated from inside to outside is called event bubbling
+
+    // preventing default behaviors
+
+    // Default behavior of anchor is open a link, Let's prevent that
+
+    // document.getElementById('google').addEventListener('click' , function (e){
+        
+            //     e.preventDefault() // Prevents default behaviors like opening a link
+            //     e.stopPropagation() // Prevents event bubbling
+
+            //     console.log("Google clicked");
+            // } , false)
+    
+    // Output of the above snippet: "Google clicked"
+
+    // Some real world example
+
+    // On clicking, Make the images go away
+
+    document.querySelector('ul').addEventListener('click' , function(e){
+
+        console.log(e.target.tagName);
+        if (e.target.tagName == 'IMG'){
+                e.target.parentNode.remove()
+        }
+        else if (e.target.tagName == 'LI'){
+                e.target.remove()
+        }
+        else if (e.target.tagName == 'UL'){
+                console.log(e.target.tagName);
+        }
+        else{
+                e.preventDefault()
+                e.target.parentNode.remove()
+        }
+        
+    } , false)
+   </script>
+</body>
+</html>
