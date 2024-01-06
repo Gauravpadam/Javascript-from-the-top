@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Events</title>
+</head>
+<body>
+    <h1>foobar</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        // Getting familar with setTimeout and setInterval methods
+
+        // setTimeout takes a handler function and a time duration
+        // It sets the time duration as a delay for callback to the handler
+        // In easy logic, Your task will be executed in x seconds; where x is the time you provide (in ms)
+
+                // setTimeout(function(){
+                //     console.log("foobar");
+                // } , 2000)
+
+        // Prints foobar after 2 seconds
+
+        // some function play with this...
+
+        //         const sayFooBar = function(){
+        //             console.log("foobar");
+        //         }
+
+        //         const callBackEvent = setTimeout(sayFooBar , 2000) // Passing reference of the handler for execution
+        
+        // // What if I want it to stop the execution; clear the event from callback queue?
+
+        //         // const clearCallBack = clearTimeout(callBackEvent) // Passing reference of the callBack
+
+        // // Now, Attach this to a button
+
+                // document.querySelector('#stop').addEventListener('click' , function(){
+                //     clearTimeout(callBackEvent)
+                // } , false)
+
+        // // Now if you click the button before timer, It won't print foobar
+
+        // setInterval
+        // It repeats the callback at set intervals
+
+                // setInterval(function(){
+                //     console.log("foobar");
+                // } , 1000)
+        
+        // This floods my console with foobar; every 1 sec
+
+        // Some function play...
+
+                // const sayFooBar = function(){
+                //     console.log("foobar");
+                // }
+                
+                // setInterval(sayFooBar , 1000)
+        
+        // Let's assign things to the buttons, but first...
+        // alternating foobars!
+
+                // let message = "foo"
+
+                // const heading = document.querySelector('h1')
+
+                // setInterval(function (){
+
+                //     if (message == "foo"){
+                //         message = "bar"
+                //         heading.innerHTML = message
+                //     }
+                //     else {
+                //         message = "foo"
+                //         heading.innerHTML = message
+                //     }
+                    
+                // } , 1000)
+        
+        // Coming back to buttons
+
+                let message = "foo"
+
+                const heading = document.querySelector('h1')
+
+                let intervalID = null // Because intervalId is needed to clear Intervals
+
+                const doFooBar = function (){ // A reference for handler function which changes h1
+
+                    if (message == "foo"){
+                        message = "bar"
+                        heading.innerHTML = message
+                    }
+                    else {
+                        message = "foo"
+                        heading.innerHTML = message
+                    }
+                }
+
+                const callBackEvent = function(){ // A reference for creating a setInterval handler
+                    if (!intervalID){ // A check to prevent multiple callbacks
+                        intervalID = setInterval(doFooBar , 1000) // intervalId for stopping the callback
+                    }
+                }
+
+                document.querySelector('#start').addEventListener('click' , callBackEvent , false) // passing the reference
+                document.querySelector("#stop").addEventListener('click' , function (){
+                    clearInterval(intervalID) // passing intervalid for stopping
+                    intervalID = null // garbage cleanup
+                }, false)
+        
+        // And there you have it, Intervals and callbacks masterclass
+                
+
+        
+        
+    </script>
+</body>
+</html>
