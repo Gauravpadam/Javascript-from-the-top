@@ -1,0 +1,37 @@
+<!-- AJAX (Asynchronous Javascript and XML) programming is the legacy method of dealing with asynchronous events.
+Every operation is treated as a state here; Eliminating the modern need of async and await.
+Though this is legacy and not in use, This is powerful enough that react still uses states to this date-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const requestUrl = "https://api.github.com/users/Gauravpadam" // string to make http requests to
+        const xhr = new XMLHttpRequest() // A new XMLHttpRequest Object; This will deal with my api call
+        xhr.open('GET' , requestUrl) // Open the get request
+        xhr.onreadystatechange = function(){
+            console.log(xhr.readyState); // print all switching states
+
+            // On completeed state
+            if (xhr.readyState === 4){
+                // console.log(this.responseText); prints the api in string format
+                const data = JSON.parse(this.responseText) // parses the string response as json(converts string to json)
+                console.log(data.bio); // prints bio
+            }
+        }
+        xhr.send() // Nothing happens before sending the request
+
+        /*
+            Some apis like console and document are not present in JS (Try accesing them in node to find out)
+            These are injected by runtime browser engines like V8
+            V8 is written in c++; Open sourced completely
+            ''Javascript is a wrapper of c++''
+        */
+    </script>
+</body>
+</html>
