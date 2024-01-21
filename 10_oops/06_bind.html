@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">Button clicked</button>
+</body>
+<script>
+        // A react example where bind was extensively used in past days
+
+        class React {
+            constructor(){
+                this.library = "react"
+                this.server = "http://localhost:3000"
+            }
+
+            document.querySelector('#button').addEventListener('click' , this.handleClick.bind(this)) // bind is essentially
+            // binding the global context for the local context to find it properly for the execution of this.server
+
+            // Similar to call? yes.
+            handleClick() {
+                console.log(`Button was clicked at ${this.server}`);
+            }
+        }
+
+        const app = new React()
+        // Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+        /*
+            The bind() function creates a new bound function. 
+            Calling the bound function generally results in the execution of the function it wraps, which is also called the target function. 
+            The bound function will store the parameters passed — which include the value of this and the first few arguments — as its internal state. 
+            These values are stored in advance, instead of being passed at call time. 
+            You can generally see const boundFn = fn.bind(thisArg, arg1, arg2) as being equivalent to 
+            const boundFn = (...restArgs) => fn.call(thisArg, arg1, arg2, ...restArgs) for the effect when it's called (but not when boundFn is constructed).
+        */
+       // This means call and bind behave the same during execution, but the construction is different
+    </script>
+</html>
+
